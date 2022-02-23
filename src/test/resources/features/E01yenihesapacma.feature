@@ -7,7 +7,7 @@ Feature: E01 HMC yenı hesap olusturma
     Then kullanici loginButonu linkine tıklar
     And kullanici create a new account linkine tıklar
     Then kullanici istenen bilgileri girer
-    And kullanici save linkine tıklar
+
 
 
 
