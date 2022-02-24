@@ -30,6 +30,12 @@ public class HMCpage {
     public WebElement countryBoxElement;
 
 
+    @FindBy(xpath = "//input[@id='btnSubmit']")
+    public WebElement saveButton;
+
+    @FindBy(xpath="/html/body/div[3]/div/div/div[2]/button")
+    public WebElement okButton;
+
     public void dropDownRandom(WebElement dropDown) {
         Select select = new Select(dropDown);
         List<WebElement> dropDownList = select.getOptions();

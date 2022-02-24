@@ -1,13 +1,14 @@
-Feature: E01 HMC yenı hesap olusturma
+Feature: E03 CheckBox controls
 
-  @HMCStepDefinitions
-  Scenario: HMC de hesap olusum testı
+  Scenario: Locate checkboxes and clicks
 
-    Given kullanici "AmazonUrl" sayfasina gider
-    Then kullanici loginButonu linkine tıklar
-    And kullanici create a new account linkine tıklar
-    Then kullanici istenen bilgileri girer
 
+
+  https://the-internet.herokuapp.com/checkboxes
+  b. Checkbox1 ve checkbox2 elementlerini locate edin.
+  c. Checkbox1 seçili değilse onay kutusunu tıklayın
+  d. Checkbox2 seçili değilse onay kutusunu tıklayın
+  (isSelected)
 
 
 
