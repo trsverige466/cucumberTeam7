@@ -7,7 +7,7 @@ import utilities.Driver;
 
 public class Herokuapp {
 
-    Herokuapp(){
+    public Herokuapp(){
 
         PageFactory.initElements(Driver.getDriver(),this);
 
