@@ -62,7 +62,8 @@ String password=faker.internet().password()+"Aa.1";
 actions.sendKeys(Keys.TAB).sendKeys(password).sendKeys(Keys.TAB).sendKeys(faker.internet().emailAddress())
         .sendKeys(Keys.TAB).sendKeys(faker.name().fullName()).sendKeys(Keys.TAB).sendKeys(faker.phoneNumber().phoneNumber())
         .sendKeys(Keys.TAB).sendKeys("000000000").sendKeys(Keys.TAB).sendKeys("yes").sendKeys(Keys.TAB)
-        .sendKeys("a").sendKeys(Keys.TAB).perform();
+        .sendKeys("a").sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(faker.address().fullAddress()).sendKeys(Keys.TAB)
+        .sendKeys("IT").sendKeys(Keys.TAB).sendKeys("12/12/1990").perform();
 
 
 
@@ -71,7 +72,8 @@ actions.sendKeys(Keys.TAB).sendKeys(password).sendKeys(Keys.TAB).sendKeys(faker.
     }
     @Then("user clicks to save button")
     public void user_clicks_to_save_button() {
-
+hmCpage.saveButton.click();
+hmCpage.okButton.click();
     }
 
 
