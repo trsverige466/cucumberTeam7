@@ -27,4 +27,12 @@ public class Herokuapp {
     @FindBy(xpath = "//p[@id='result']")
     public WebElement resultText;
 
+    @FindBy(tagName = "h3")
+    public WebElement frameText;
+
+    @FindBy(xpath = "//iframe[@id='mce_0_ifr']")
+    public WebElement iframeTextbox;
+
+    @FindBy(xpath = "//*[@id=\"page-footer\"]/div/div/a")
+    public WebElement elementerSelenium;
 }
