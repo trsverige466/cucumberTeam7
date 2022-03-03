@@ -39,6 +39,34 @@ public class HMCStepDefinitions {
         hmCpage.createANewAccountButton.click();
 
     }
+    // ************************
+
+    @Given("user goes to {string} web site")
+    public void user_goes_to_web_site(String string) {
+
+    }
+    @Then("user gets create a new account button")
+    public void user_gets_create_a_new_account_button() {
+        hmCpage.createANewAccountButton.click();
+    }
+    @Then("user gives fills the blanks")
+    public void user_gives_fills_the_blanks() {
+        hmCpage.registrationUsername.click();
+        Faker faker=new Faker();
+        String userName=faker.name().firstName();
+        String password=faker.internet().password()+"Ye.";
+        hmCpage.registrationUsername.sendKeys(userName);
 
 
+    }
+    @Then("user clicks to save button")
+    public void user_clicks_to_save_button() {
+
+    }
+
+
+    @Then("user clicks to login")
+    public void userClicksToLogin() {
+        hmCpage.loginButonu.click();
+    }
 }

@@ -1,9 +1,13 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import utilities.Driver;
+
+import java.util.List;
 
 public class HMCpage {
     public HMCpage(){
@@ -21,4 +25,13 @@ public class HMCpage {
 
     @FindBy(xpath = "//input[@id='Password']")
     public WebElement registrationPassword;
+    public void dropboxrandomsecim(WebElement a){
+        Faker faker = new Faker();
+        Select select = new Select(a);
+        List<WebElement> dropbox = select.getOptions();
+        int rnd = faker.random().nextInt(1, dropbox.size() - 1);
+        select.selectByIndex(rnd);
+select.selectByIndex(rnd);
+
+    }
 }
