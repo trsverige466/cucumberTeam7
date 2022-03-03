@@ -4,7 +4,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import pages.Herokuapp;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -54,7 +56,6 @@ if(!herokuapp.checkbox2.isSelected()){
         @Then("user controls dismission")
         public void user_controls_dismission () {
         Assert.assertTrue(herokuapp.resultText.getText().contains("Cancel"));
-            System.out.println(herokuapp.resultText.getText());
         Driver.closeDriver();
         }
 
@@ -69,6 +70,36 @@ if(!herokuapp.checkbox2.isSelected()){
         Driver.getDriver().switchTo().alert().sendKeys("Prompt");
         Driver.getDriver().switchTo().alert().accept();
         Assert.assertTrue(herokuapp.resultText.getText().contains("Prompt"));
+
+        Driver.closeDriver();
+    }
+
+    @Then("user tests “An IFrame containing….” text is enable")
+    public void userTestsAnIFrameContainingTextIsEnable() {
+       Assert.assertTrue(herokuapp.frameText.isDisplayed());
+    }
+
+    @And("user writes “Merhaba Dunya!” at textBox")
+    public void userWritesMerhabaDunyaAtTextBox() {
+        WebElement frame= Driver.getDriver().findElement(By.tagName("iframe"));
+        Driver.getDriver().switchTo().frame(frame);
+        WebElement textBox= Driver.getDriver().findElement(By.tagName("P"));
+        textBox.clear();
+        textBox.sendKeys("Merhaba Dunya!");
+    }
+
+    @And("user verifies “Elemental Selenium” is visible")
+    public void userVerifiesElementalSeleniumIsVisible() {
+        Driver.getDriver().switchTo().parentFrame();// bir ustteki frame gecer
+      //  Driver.getDriver().switchTo().defaultContent();// EN usttekine gider
+        Assert.assertTrue(herokuapp.elementerSelenium.isDisplayed());
+    }
+
+    @And("user get written {string} on the console")
+    public void userGetWrittenOnTheConsole(String arg0) {
+        System.out.println(herokuapp.elementerSelenium.getText());
+
+        Driver.closeDriver();
     }
 }
 
