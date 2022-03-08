@@ -35,4 +35,11 @@ public class Herokuapp {
 
     @FindBy(xpath = "//*[@id=\"page-footer\"]/div/div/a")
     public WebElement elementerSelenium;
+
+    @FindBy(tagName="h3")
+    public WebElement wındowTag;
+    @FindBy(xpath = "//*[@id=\"content\"]/div/a")
+    public WebElement bbb;
+    @FindBy(tagName = "h3")
+    public WebElement ccc;
 }
