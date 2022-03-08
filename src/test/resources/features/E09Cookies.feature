@@ -16,6 +16,7 @@ Feature: E09 cookies class Work
 
 
 #Cookies Class Work
+  #CONFLICT YAPTIM
 #Yeni bir class olusturun : cookiesAutomation
 #1- Amazon anasayfaya gidin
 #2- tum cookie’leri listeleyin
