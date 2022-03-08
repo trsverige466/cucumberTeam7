@@ -7,7 +7,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import pages.Herokuapp;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -101,6 +103,39 @@ if(!herokuapp.checkbox2.isSelected()){
 
         Driver.closeDriver();
     }
+
+    @Then("user tests that title contains {string}")
+    public void user_tests_that_title_contains(String string1) {
+String title1=Driver.getDriver().getTitle();
+Assert.assertTrue(title1.contains(string1));
+String windowHandle1=Driver.getDriver().getWindowHandle();
+    }
+    String windowHandle1=Driver.getDriver().getWindowHandle();
+    @Then("user goes to {string}   website on new tab")
+    public void user_goes_to_website_on_new_tab(String string) {
+Driver.getDriver().switchTo().newWindow(WindowType.TAB);
+Driver.getDriver().get(ConfigReader.getProperty("TechproedUrl"));
+        String windowHandle2=Driver.getDriver().getWindowHandle();
+    }
+    @Then("user goes to {string}   website on new page")
+    public void user_goes_to_website_on_new_page(String string) {
+Driver.getDriver().switchTo().newWindow(WindowType.WINDOW);
+        Driver.getDriver().get(ConfigReader.getProperty("WalmartUrl"));
+        String windowHandle3=Driver.getDriver().getWindowHandle();
+
+
+
+    }
+    @Then("user back to first page and tests to return")
+    public void user_back_to_first_page_and_tests_to_return() {
+
+        Driver.getDriver().switchTo().window(windowHandle1);
+    }
+
+
+
+
 }
+
 
 
