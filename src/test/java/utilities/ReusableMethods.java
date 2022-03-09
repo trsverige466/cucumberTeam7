@@ -19,7 +19,7 @@ import java.util.function.Function;
 
 public class ReusableMethods {
 
-    public static String getScreenshot(String name) throws IOException {
+    public static String getScreenshot(String name)  {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         // TakesScreenshot is an interface of selenium that takes the screenshot
@@ -29,10 +29,31 @@ public class ReusableMethods {
         String target = System.getProperty("user.dir") + "/test-output/Screenshots/" + name + date + ".png";
         File finalDestination = new File(target);
         // save the screenshot to the path given
-        FileUtils.copyFile(source, finalDestination);
+        try {
+            FileUtils.copyFile(source, finalDestination);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return target;
     }
 
+    public static String getScreenshotWebelement(String name,WebElement webElement)  {
+        // naming the screenshot with the current date to avoid duplication
+        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        // TakesScreenshot is an interface of selenium that takes the screenshot
+       // TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+        File source = webElement.getScreenshotAs(OutputType.FILE);
+        // full path to the screenshot location
+        String target = System.getProperty("user.dir") + "/test-output/Screenshots/" + name + date + ".png";
+        File finalDestination = new File(target);
+        // save the screenshot to the path given
+        try {
+            FileUtils.copyFile(source, finalDestination);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return target;
+    }
     //========Switching Window=====//
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
