@@ -1,6 +1,6 @@
 Feature: E01 HMC yenı hesap olusturma
 
-  @HMCStepDefinitions
+  @ali
   Scenario: HMC de hesap olusum testı
 
     Given kullanici "AmazonUrl" sayfasina gider

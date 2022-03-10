@@ -1,5 +1,5 @@
 Feature: E05 Herokuapp Olusturma
-@hero
+@t1
   Scenario: Allert handle
 
      Given user goes to "HerokuappAllert" website
