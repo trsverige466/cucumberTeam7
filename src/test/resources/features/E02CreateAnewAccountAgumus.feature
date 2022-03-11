@@ -1,5 +1,5 @@
 Feature: HMC create a new account
-@t1
+
   Scenario: TC01 create a new account
 
     Given user goes to "HMCUrl" website
