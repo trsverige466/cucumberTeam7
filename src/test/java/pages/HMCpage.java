@@ -45,7 +45,21 @@ public class HMCpage {
 
 
     }
+    @FindBy(xpath="//*[@id=\"navRooms\"]/a")
+    public WebElement RoomsButton;
+@FindBy(xpath="/html/body/section[1]/div/div/div[1]/div/div[2]/div/div/h3/a")
+    public WebElement HotelRoomButton;
+@FindBy(xpath="/html/body/section[1]/div/div/div[1]/div/div[1]/h2")
+    public WebElement HotelRoomText;
 
+@FindBy(xpath="//*[@id=\"UserName\"]")
+    public WebElement UserNameBox;
+
+    @FindBy(xpath="//*[@id=\"Password\"]")
+    public WebElement PasswordBox;
+
+    @FindBy(xpath="//*[@id=\"add-form\"]/div[3]/button")
+    public WebElement logInButton;
 
 
 }
