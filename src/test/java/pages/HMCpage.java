@@ -61,5 +61,19 @@ public class HMCpage {
     @FindBy(xpath="//*[@id=\"add-form\"]/div[3]/button")
     public WebElement logInButton;
 
+    @FindBy(xpath="//tbody//tr//td")
+    public List<WebElement> HucreSayisiList;
+
+    @FindBy(xpath="//tbody//tr")
+    public List<WebElement> SatirSayisiList;
+
+    @FindBy(xpath="//tbody")
+    public List<WebElement> TumbodyList;
+
+    @FindBy(xpath = "//div[@class='validation-summary-errors']")
+    public WebElement accessDeniedText;
+
+    @FindBy(id="btnSubmit")
+    public WebElement submitButton;
 
 }

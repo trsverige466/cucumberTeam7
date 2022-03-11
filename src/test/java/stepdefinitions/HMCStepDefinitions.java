@@ -5,13 +5,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.HMCpage;
 import utilities.ConfigReader;
 import utilities.Driver;
+
+import java.util.List;
 
 public class HMCStepDefinitions {
     HMCpage hmCpage=new HMCpage();
@@ -112,51 +116,59 @@ hmCpage.RoomsButton.click();
 
     }
 
-    @Then("enter username and password")
-    public void enter_username_and_password() {
-hmCpage.UserNameBox.sendKeys("manager");
-hmCpage.PasswordBox.sendKeys("Manager1!");
-hmCpage.logInButton.click();
-    }
-    @Then("Tüm table body’sinin boyutunu\\(sutun sayisi) bulun")
-    public void tüm_table_body_sinin_boyutunu_sutun_sayisi_bulun() {
-
-    }
-    @Then("Table’daki tum body’I ve başlıkları\\(headers) konsolda yazdırın")
-    public void table_daki_tum_body_ı_ve_başlıkları_headers_konsolda_yazdırın() {
-
-    }
-    @Then("table body’sinde bulunan toplam satir\\(row) sayısını bulun")
-    public void table_body_sinde_bulunan_toplam_satir_row_sayısını_bulun() {
-
-    }
-    @Then("Table body’sinde bulunan satirlari\\(rows) konsolda yazdırın")
-    public void table_body_sinde_bulunan_satirlari_rows_konsolda_yazdırın() {
-
-    }
-    @Then("{int}.satirdaki\\(row) elementleri konsolda yazdırın")
-    public void satirdaki_row_elementleri_konsolda_yazdırın(Integer int1) {
-
+    @Then("user logIn")
+    public void userLogIn() {
+        hmCpage.UserNameBox.sendKeys("manager");
+        hmCpage.PasswordBox.sendKeys("Manager1!");
+        hmCpage.logInButton.click();
     }
 
+    @Then("Tum body boyutunu bulun\\(sutun sayısı)")
+    public void tum_body_boyutunu_bulun_sutun_sayısı() {
+        System.out.println(hmCpage.HucreSayisiList.size());
+    }
+    @Then("tum body yazdır")
+    public void tum_body_yazdır() {
+        System.out.println(hmCpage.TumbodyList.size());
+        System.out.println(hmCpage.TumbodyList.get(0).getText());
+    }
+    @Then("tum satir sayisini bulun ve yazdirin")
+    public void tum_satir_sayisini_bulun_ve_yazdirin() {
+        System.out.println(hmCpage.SatirSayisiList.size());
+
+        for (int i = 0; i <hmCpage.SatirSayisiList.size() ; i++) {
+            System.out.println(hmCpage.SatirSayisiList.get(i).getText());
+        }
+
+    }
+    @Then("{string} satir {string} sutun yazdır")
+    public void satir_sutun_yazdır(String satir, String sutun) {
+String dinamikXpath="//tbody//tr["+satir+"]//td["+sutun+"]";
+
+WebElement istenen= Driver.getDriver().findElement(By.xpath(dinamikXpath));
+        System.out.println(istenen.getText());
+    }
 
 
+    @And("user clicks logInButton")
+    public void userClicksLogInButton() {
+        hmCpage.loginButonu.click();
+    }
 
+    @Then("kullanici olarak {string} password olarak {string} girer")
+    public void kullaniciOlarakPasswordOlarakGirer(String arg0, String arg1) {
+        hmCpage.registrationUsername.sendKeys(arg0);
+        hmCpage.registrationPassword.sendKeys(arg1);
 
+    }
 
+    @Then("logIn butonuna basar")
+    public void logınButonunaBasar() {
+        hmCpage.submitButton.click();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @And("giris yapilamadigini test eder")
+    public void girisYapilamadiginiTestEder() {
+        Assert.assertTrue(hmCpage.accessDeniedText.isDisplayed());
+    }
 }
