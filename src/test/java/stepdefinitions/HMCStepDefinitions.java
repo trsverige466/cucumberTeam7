@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -82,6 +84,78 @@ hmCpage.okButton.click();
         hmCpage.loginButonu.click();
 
     }
+
+
+
+    @Then("user clicks to Rooms Button")
+    public void user_clicks_to_rooms_button() {
+hmCpage.RoomsButton.click();
+    }
+    @Then("user clicks to Middle Room Button")
+    public void user_clicks_to_middle_room_button() {
+        JavascriptExecutor jse= (JavascriptExecutor) Driver.getDriver();
+        jse.executeScript("arguments[0].scrollIntoView(true);",hmCpage.HotelRoomButton);
+        jse.executeScript("arguments[0].click();",hmCpage.HotelRoomButton);
+    }
+    @Then("user checks to opening page")
+    public void user_checks_to_opening_page() {
+        Assert.assertTrue(hmCpage.HotelRoomText.isDisplayed());
+
+    }
+
+
+    @And("user clicks to middle Rooms Button")
+    public void userClicksToMiddleRoomsButton() {
+        JavascriptExecutor jse1= (JavascriptExecutor) Driver.getDriver();
+        jse1.executeScript("arguments[1].scrollIntoView(true);arguments[0].click();",hmCpage.HotelRoomButton,hmCpage.HotelRoomButton);
+      //  jse1.executeScript("arguments[0].click();",hmCpage.HotelRoomButton);
+
+    }
+
+    @Then("enter username and password")
+    public void enter_username_and_password() {
+hmCpage.UserNameBox.sendKeys("manager");
+hmCpage.PasswordBox.sendKeys("Manager1!");
+hmCpage.logInButton.click();
+    }
+    @Then("Tüm table body’sinin boyutunu\\(sutun sayisi) bulun")
+    public void tüm_table_body_sinin_boyutunu_sutun_sayisi_bulun() {
+
+    }
+    @Then("Table’daki tum body’I ve başlıkları\\(headers) konsolda yazdırın")
+    public void table_daki_tum_body_ı_ve_başlıkları_headers_konsolda_yazdırın() {
+
+    }
+    @Then("table body’sinde bulunan toplam satir\\(row) sayısını bulun")
+    public void table_body_sinde_bulunan_toplam_satir_row_sayısını_bulun() {
+
+    }
+    @Then("Table body’sinde bulunan satirlari\\(rows) konsolda yazdırın")
+    public void table_body_sinde_bulunan_satirlari_rows_konsolda_yazdırın() {
+
+    }
+    @Then("{int}.satirdaki\\(row) elementleri konsolda yazdırın")
+    public void satirdaki_row_elementleri_konsolda_yazdırın(Integer int1) {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
