@@ -21,8 +21,7 @@ public class Driver {
 
 
 
-        if(driver==null){   // bu if sayesinde kod calisirken bir kere new keyword ile driver olusturulaca
-            // diger kullanimlarda new devreye girmeyecek
+        if(driver==null){
             switch (ConfigReader.getProperty("browser")){
 
                 case "chrome":
@@ -48,7 +47,7 @@ public class Driver {
 
         }
 
-       // driver.manage().window().maximize();
+      // driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         return driver;
     }
